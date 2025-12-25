@@ -101,13 +101,13 @@ fun HomeBody(
     ) {
         when (statusUiSiswa) {
             is StatusUiSiswa.Loading -> LoadingScreen()
-            is StatusUiSiswa.Success -> DataSiswaList(
-                siswa = statusUiSiswa.siswa,
+            is StatusUiSiswa.Success -> DaftarSiswa(
+                itemSiswa = statusUiSiswa.siswa,
                 onSiswaClick = onSiswaClick
             )
             is StatusUiSiswa.Error -> ErrorScreen(
-                retryAction = retryAction,
-                modifier = Modifier.fillMaxSize()
+                retryAction,
+                modifier = modifier.fillMaxSize()
             )
         }
     }
@@ -139,14 +139,15 @@ fun ErrorScreen(
     }
 }
 
+
 @Composable
-fun DataSiswaList(
-    siswa: List<DataSiswa>,
+fun DaftarSiswa(
+    itemSiswa: List<DataSiswa>,
     onSiswaClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(modifier = modifier) {
-        items(items = siswa, key = { it.id }) { person ->
+    LazyColumn(modifier = Modifier) {
+        items(items = itemSiswa, key = { it.id }) { person ->
             ItemSiswa(
                 siswa = person,
                 modifier = Modifier
@@ -179,7 +180,9 @@ fun ItemSiswa(
                 style = MaterialTheme.typography.titleLarge
             )
 
-            Row {
+            Row (
+                verticalAlignment = Alignment.CenterVertically
+            ){
                 Icon(
                     imageVector = Icons.Default.Phone,
                     contentDescription = null
