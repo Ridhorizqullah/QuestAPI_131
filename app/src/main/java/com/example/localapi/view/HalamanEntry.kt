@@ -73,18 +73,6 @@ fun EntrySiswaScreen(
 }
 
 @Composable
-fun SiswaTopAppBar(
-    title: String,
-    canNavigateBack: Boolean,
-    navigateUp: () -> Unit,
-//    scrollBehavior: TopAppBarScrollBehavior,
-    modifier: Modifier = Modifier
-) {
-    TODO("Not yet implemented")
-
-}
-
-@Composable
 fun EntrySiswaBody(
     uiStateSiswa: UIStateSiswa,
     onSiswaValueChange: (DetailSiswa) -> Unit,
